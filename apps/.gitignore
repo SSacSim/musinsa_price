@@ -1,3 +1,2 @@
-./datas
-./datas/*.csv
 *.csv
+datas/
