@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name }} - 상품 정보</title>
+</head>
+<body>
+    <h1>{{ product.name }}</h1>
+    <p><strong>상품 번호:</strong> {{ product.상품번호 }}</p>
+    <p><strong>상품명:</strong> {{ product.상품명 }}</p>
+    <p><strong>가격:</strong> {{ product.가격 }}</p>
+    <p><strong>할인율:</strong> {{product.할인율 | default(0,true)}}%</p>
+</body>
+</html>
