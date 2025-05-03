@@ -31,8 +31,13 @@ def show_product(product_id):
     else:
         abort(404)
 
+
 @app.route('/validate_product', methods=['GET'])
 def validate_product():
+    '''
+        상품번호 유효 확인 
+        return : jsonify 
+    '''
     product_id = request.args.get('product_id')
 
     if product_id in product_data:
@@ -41,7 +46,17 @@ def validate_product():
     else:
         # 유효하지 않으면 오류 메시지 반환
         return jsonify({"valid": False, "message": "상품번호가 존재하지 않습니다."})
-    
+
+
+
+@app.route('/get_product_data')
+def get_product_data():
+    # print("ddddd")
+    product_data = {
+        'price': [10000, 50000, 3000, 2000, 40000],  # 가격 (숫자형)
+        'discountRate': [30, 50, 20, 30, 50]   # 할인율
+    }
+    return jsonify(product_data)
 
 
 if __name__ == '__main__':
