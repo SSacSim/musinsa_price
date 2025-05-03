@@ -1,0 +1,73 @@
+.search-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.search-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.logo-wrapper {
+    position: absolute;
+    left: 20px; /* 완전히 붙이고 싶다면 0으로 */
+}
+
+.logo2 {
+    width: 100px;   /* 원하는 너비 */
+    height: 40px;   /* 원하는 높이 */
+    object-fit: contain; /* 비율 유지하면서 잘리지 않도록 */
+}
+
+.search-form {
+    text-align: center;
+}
+
+.search-form input {
+    padding: 8px;
+    width: 400px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+body {
+    margin-top: 70px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}
+
+.product-details {
+    display: flex;
+    gap: 30px; /* 이미지와 텍스트 사이 간격 */
+    align-items: flex-start;
+    justify-content: center;  /* 가운데 정렬 */
+    margin-top: 20px;
+}
+
+.image-container img {
+    max-width: 300px;
+    height: auto;
+    border: 1px solid #ccc;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 16px;
+}
+

@@ -1,0 +1,104 @@
+body {
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 20px auto; /* 가운데 정렬 + 아래 여백 */
+    width: 450px; /* 필요에 따라 조정 */
+}
+
+
+.search-box {
+    width: 500px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 24px;
+    border: 1px solid #dcdcdc;
+    outline: none;
+}
+
+.search-box:focus {
+    box-shadow: 0 0 5px rgba(66, 133, 244, 0.5);
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    border: 1px solid #c6c6c6;
+}
+
+
+.search-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.search-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.logo-wrapper {
+    position: absolute;
+    left: 20px; /* 완전히 붙이고 싶다면 0으로 */
+}
+
+.logo2 {
+    width: 100px;   /* 원하는 너비 */
+    height: 40px;   /* 원하는 높이 */
+    object-fit: contain; /* 비율 유지하면서 잘리지 않도록 */
+}
+
+.search-form {
+    text-align: center;
+}
+
+.search-form input {
+    padding: 8px;
+    width: 400px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+body {
+    margin-top: 70px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}

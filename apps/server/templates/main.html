@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Google Style Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main_style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <form onsubmit=goToProductPage(event)>
+            <img src="{{ url_for('static', filename='logo/logo.png') }}" alt="Logo" class="logo">
+            <input type="text" id="productInput" name="q" class="search-box"  placeholder="제품번호 입력">
+            <div class="buttons">
+                <button type="submit">Google 검색</button>
+                <button type="submit">I'm Feeling Lucky</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- JS 파일 연결 (body 하단에 배치 추천) -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
