@@ -14,7 +14,7 @@ from datetime import datetime
 
 def save_csv(results):
     
-    data = pd.DataFrame(results , columns = ["상품명" , "할인율" , "가격" , "좋아요","평점","리뷰","etc","상품번호"])
+    data = pd.DataFrame(results , columns = ["상품명" , "할인율" , "가격" , "좋아요","평점","리뷰","etc","상품번호", "src"])
     # 오늘 날짜를 문자열로 얻기
     today = datetime.today().strftime('%Y-%m-%d')
 
@@ -49,15 +49,18 @@ def start_crawling():
         print("row", row)
         e1 = info.find_elements(By.CLASS_NAME,"sc-cNFqVt")
         e2 = info.find_elements(By.CLASS_NAME,"sc-fpEFIB")
+        img_urls = info.find_elements(By.CLASS_NAME,"max-w-full.w-full")
 
-        for ele1, ele2 in zip(e1,e2):
-            templete = ["","","","","","","",""]
+        for index , (ele1, ele2) in enumerate(zip(e1,e2)):
+            templete = ["","","","","","","","",""]
             
             inof1 = ele1.text.split("\n")
             inof2 = ele2.text.split('\n')
             product_number = ele1.find_element("css selector", '[data-item-id]').get_attribute("data-item-id")
-            
-            templete[-1] = product_number
+            img_url = img_urls[index].get_attribute('src')
+
+            templete[-2] = product_number
+            templete[-1] = img_url
             for i , value in enumerate(inof1):
                 templete[i] = value
             
@@ -70,7 +73,8 @@ def start_crawling():
             for i , value in enumerate(inof2):
                 templete[i + 3 ] = value
             
-            results_csv.append(templete)      
+            print(templete)
+            results_csv.append(templete)  
     results = save_csv(results_csv) 
 
     return results

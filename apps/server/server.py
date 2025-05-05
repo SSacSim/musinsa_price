@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 # CSV 파일을 읽어서 딕셔너리로 저장
 # 램에 올리는건 말도 안됨 
+#
 
 def load_products():
     products = {}

@@ -80,7 +80,7 @@ img {
 .chart-container {
     width: 60vw;       /* 뷰포트 가로 전체 */
     max-width: 100%;    /* 부모 영역 넘지 않게 */
-    height: 50vh;       /* 원하는 비율: 여기선 화면 높이의 50% */
+    height: 40vh;       /* 원하는 비율: 여기선 화면 높이의 50% */
 }
 
 #scoreChart {
