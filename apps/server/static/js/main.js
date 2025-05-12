@@ -1,12 +1,3 @@
-// function goToProductPage(event) {
-//     event.preventDefault(); // 폼 기본 동작 막기
-//     const input = document.getElementById('productInput').value.trim();
-//     console.log(input)
-//     if (input) {
-//         window.location.href = `/product/${input}`;
-//     }
-// }
-
 
 function goToProductPage(event) {
     event.preventDefault(); // 폼 기본 동작 막기
