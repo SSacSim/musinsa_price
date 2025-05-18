@@ -26,3 +26,49 @@ function goToProductPage(event) {
             });
     }
 }
+
+// 공지사항 pop up 
+function openPopup() {
+    // 만약 로컬 스토리지에 'dontShowNotice'가 true면 열지 않음
+    if (localStorage.getItem('dontShowNotice') === 'true') {
+        return; // 팝업 안 띄움
+    }
+    fetch('./static/notice/notice.txt')
+        .then(response => {
+            if (!response.ok) throw new Error('공지사항을 불러올 수 없습니다.');
+            return response.text();
+        })
+        .then(text => {
+            const p = document.getElementById('noticeContent');
+            p.innerText = text;
+            document.getElementById('noticePopup').style.display = 'flex';
+        })
+        .catch(error => {
+            console.error(error);
+            // 실패 시 기본 안내 문구 표시 후 팝업 열기
+            const p = document.getElementById('noticeContent');
+            p.innerText = "공지사항을 불러오는데 실패했습니다.";
+            document.getElementById('noticePopup').style.display = 'flex';
+        });
+}
+
+// 팝업 닫기
+function closePopup() {
+    const checkbox = document.getElementById('dontShowAgain');
+    if (checkbox.checked) {
+        // 체크되어 있으면 로컬 스토리지에 기록
+        localStorage.setItem('dontShowNotice', 'true');
+    }
+    document.getElementById('noticePopup').style.display = 'none';
+}
+
+// 페이지 로드 시 자동으로 팝업 열기 시도
+window.onload = function() {
+    openPopup();
+};
+
+
+function resetNotice() {
+    localStorage.removeItem('dontShowNotice');
+    openPopup();
+}

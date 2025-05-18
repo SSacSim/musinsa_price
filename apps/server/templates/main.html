@@ -13,9 +13,21 @@
             <input type="text" id="productInput" name="q" class="search-box"  placeholder="제품번호 입력">
             <div class="buttons">
                 <button type="submit">Google 검색</button>
-                <button type="submit">I'm Feeling Lucky</button>
+                <button type="button" onclick="resetNotice()">공지 사항보기</button>
             </div>
         </form>
+    </div>
+
+    <div class="popup-overlay" id="noticePopup" style="display: none;">
+        <div class="popup">
+            <h2>📢 공지사항</h2>
+            <p id="noticeContent">공지사항을 불러오는 중...</p>
+            <label>
+                <input type="checkbox" id="dontShowAgain"> 다시 보지 않기
+            </label>
+            <br>
+            <button onclick="closePopup()">닫기</button>
+        </div>
     </div>
 
     <!-- JS 파일 연결 (body 하단에 배치 추천) -->
