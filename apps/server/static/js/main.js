@@ -72,3 +72,58 @@ function resetNotice() {
     localStorage.removeItem('dontShowNotice');
     openPopup();
 }
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("productInput");
+    const resultsList = document.createElement("ul");
+    resultsList.id = "searchResults";
+    resultsList.className = "search-results";
+    input.parentNode.insertBefore(resultsList, input.nextSibling);
+
+    input.addEventListener("input", async () => {
+        const query = input.value.trim();
+        if (query === "") {
+            resultsList.innerHTML = "";
+            return;
+        }
+
+        try {
+            const response = await fetch(`/search?q=${encodeURIComponent(query)}`);
+            const data = await response.json();
+    
+            resultsList.innerHTML = "";
+            if (data.results.length === 0) {
+                resultsList.style.display = 'none';
+                return;
+            } else {
+                resultsList.style.display = 'block';
+            }
+    
+            data.results.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                li.className = "search-result-item";
+                li.onclick = () => {
+                    input.value = item;
+                    resultsList.innerHTML = "";
+                    resultsList.style.display = 'none';
+                };
+                resultsList.appendChild(li);
+            });
+        } catch (err) {
+            console.error("검색 실패:", err);
+            resultsList.style.display = 'none';
+        }
+    });
+
+    // 입력창 외부 클릭 시 결과 숨김
+    document.addEventListener("click", (e) => {
+        if (!resultsList.contains(e.target) && e.target !== input) {
+            resultsList.innerHTML = "";
+        }
+    });
+});
+
+
