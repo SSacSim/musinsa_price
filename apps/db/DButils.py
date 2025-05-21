@@ -18,13 +18,17 @@ class DBOBJ():
         self.cur = self.conn.cursor()
 
     
-    def insert_data(self):
+    def insert_data(self, data = None):
         '''
             csv 파일로 되어있는 정보를 DB에 입력         
         '''
 
         # 파일 이름에서 날짜 추출
-        data_list = glob.glob('../../datas/*')
+        if data :
+            data_list = [r'C:\\Users\\sim\\Desktop\\musinsa\datas\\' + data]
+        else:
+            data_list = glob.glob('../../datas/*')
+
         for csv_file in data_list:
             날짜 = datetime.strptime(csv_file.split("\\")[-1].replace(".csv", ""), "%Y-%m-%d").date()
 
