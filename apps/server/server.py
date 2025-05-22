@@ -72,7 +72,7 @@ def search():
     if not query:
         return jsonify(results=[])
     try:
-        db_.cur.execute("SELECT 상품명 FROM products WHERE 상품명 LIKE %s LIMIT 5", ('%' + query + '%',))
+        db_.cur.execute("SELECT DISTINCT 상품명 FROM products WHERE 상품명 LIKE %s LIMIT 5", ('%' + query + '%',))
         
         results = [row for row in db_.cur.fetchall()]
         print(results)

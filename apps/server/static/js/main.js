@@ -1,6 +1,7 @@
 
 function goToProductPage(event) {
-    event.preventDefault(); // 폼 기본 동작 막기
+    if(event) event.preventDefault();
+    // event.preventDefault(); // 폼 기본 동작 막기
     const input = document.getElementById('productInput').value.trim();
 
     console.log("입력값:", input); // 콘솔에서 값 확인용
@@ -109,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     input.value = item;
                     resultsList.innerHTML = "";
                     resultsList.style.display = 'none';
+                    goToProductPage();
                 };
                 resultsList.appendChild(li);
             });

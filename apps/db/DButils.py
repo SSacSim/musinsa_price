@@ -100,14 +100,23 @@ class DBOBJ():
         if item_ is None:
             return None
 
+        # self.cur.execute("""
+        #                     SELECT 상품번호
+        #                     FROM products
+        #                     WHERE 상품번호 = %s OR 상품명 = %s
+        #                     LIMIT 1 
+        #                 """, (item_, item_))
+        
+
         self.cur.execute("""
-                            SELECT 상품번호
-                            FROM products
-                            WHERE 상품번호 = %s OR 상품명 = %s
-                            LIMIT 1 
-                        """, (item_, item_))
+                    SELECT 상품번호
+                    FROM products
+                    WHERE 상품번호 = %s 
+                    OR to_tsvector('english', 상품명) @@ plainto_tsquery('english', %s)
+                    LIMIT 1;
+                """, (item_, item_))
         number_ = self.cur.fetchone()  # True 또는 False
-    
+        print("number",number_)
         if number_ is None:
             return None 
         

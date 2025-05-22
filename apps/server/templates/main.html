@@ -8,12 +8,12 @@
 </head>
 <body>
     <div class="container">
-        <form onsubmit=goToProductPage(event)>
+        <form id="searchForm" onsubmit=goToProductPage(event)>
             <img src="{{ url_for('static', filename='logo/logo.png') }}" alt="Logo" class="logo">
             <input type="text" id="productInput" name="q" class="search-box"  placeholder="제품명/제품번호 입력">
             <ul id="searchResults" class="search-results"></ul>
             <div class="buttons">
-                <button type="submit">Google 검색</button>
+                <button type="submit">상품검색</button>
                 <button type="button" onclick="resetNotice()">공지 사항보기</button>
             </div>
         </form>
