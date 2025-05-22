@@ -9,7 +9,7 @@ function goToProductPage(event) {
         alert("상품번호를 입력해주세요.");
     } else {
         // 상품번호가 CSV에 있는지 확인하는 AJAX 요청
-        fetch(`/validate_product?product_id=${input}`)
+        fetch(`/validate_product?product=${input}`)
             .then(response => response.json())
             .then(data => {
                 if (data.valid) {
@@ -118,12 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 입력창 외부 클릭 시 결과 숨김
-    document.addEventListener("click", (e) => {
-        if (!resultsList.contains(e.target) && e.target !== input) {
-            resultsList.innerHTML = "";
-        }
-    });
+    // // 입력창 외부 클릭 시 결과 숨김
+    // document.addEventListener("click", (e) => {
+    //     if (!resultsList.contains(e.target) && e.target !== input) {
+    //         resultsList.innerHTML = "";
+    //     }
+    // });
 });
 
 

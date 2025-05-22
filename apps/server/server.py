@@ -46,15 +46,15 @@ def validate_product():
         상품번호 유효 확인 
         return : jsonify 
     '''
-    product_id = request.args.get('product_id')
 
-    if db_.valid_item(product_id):
-        # 유효한 상품번호라면 해당 상품 페이지로 리디렉션
-        return jsonify({"valid": True, "url": f"/product/{product_id}"})
-    else:
-        # 유효하지 않으면 오류 메시지 반환
+    # 상품번호 / 상풍명 들어왔을때 처리하도록 변경 .
+    product = request.args.get('product')
+    print(product)
+    product_number = db_.valid_item(product)
+    if product_number is None:
         return jsonify({"valid": False, "message": "상품번호가 존재하지 않습니다."})
-
+    else:
+        return jsonify({"valid": True, "url": f"/product/{product_number}"})
 
 
 @app.route('/get_product_data')

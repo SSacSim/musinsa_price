@@ -91,20 +91,25 @@ class DBOBJ():
         self.conn.commit()
         return cost, sale, date , info_dict, rows
     
-    def valid_item(self, item_index = None, ):
+    def valid_item(self, item_ = None ):
         '''
             유효한 상품이 존재하는지 파악하기 위한 것 
             item_index : 상품 번호 
             
         '''
+        if item_ is None:
+            return None
 
         self.cur.execute("""
-                            SELECT EXISTS (
-                                SELECT 1 FROM products
-                                WHERE 상품번호 = %s
-                            )
-                        """, (item_index,))
-        exists = self.cur.fetchone()[0]  # True 또는 False
-
-        return exists
+                            SELECT 상품번호
+                            FROM products
+                            WHERE 상품번호 = %s OR 상품명 = %s
+                            LIMIT 1 
+                        """, (item_, item_))
+        number_ = self.cur.fetchone()  # True 또는 False
+    
+        if number_ is None:
+            return None 
+        
+        return number_[0]
         
