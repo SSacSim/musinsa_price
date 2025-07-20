@@ -7,6 +7,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import db.DButils as dbu
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 CORS(app)
@@ -21,14 +22,21 @@ db_ = dbu.DBOBJ()
 
 date, cost , sale = None, None ,None 
 def load_products(item_index):
-    
     cost,sale, date , products, rows= db_.search_items(item_index)
     return products, cost, sale, date
 
 
+def find_top_sale_products():
+    today_str = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+    # return db_.search_top_discount_items(date_ ="today_str", n = 10)
+    return db_.search_top_discount_items( n = 10)
+
 @app.route('/')
 def show_main():
-    return render_template('main.html')
+    top_products = find_top_sale_products()
+    print(top_products)
+    return render_template('main.html', products=top_products)
+
 
 @app.route('/product/<product_id>')
 def show_product(product_id):
@@ -49,6 +57,7 @@ def validate_product():
 
     # 상품번호 / 상풍명 들어왔을때 처리하도록 변경 .
     product = request.args.get('product')
+    print("product")
     print(product)
     product_number = db_.valid_item(product)
     if product_number is None:

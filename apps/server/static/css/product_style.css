@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #f1f1f1;
+    background-color: white;
     padding: 10px 0;
     z-index: 1000;
 }
@@ -17,8 +17,10 @@
 }
 
 .logo-wrapper {
-    position: absolute;
-    left: 20px; /* 완전히 붙이고 싶다면 0으로 */
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    z-index: 1001; /* 검색창보다 위에 있도록 설정 */
 }
 
 .logo2 {

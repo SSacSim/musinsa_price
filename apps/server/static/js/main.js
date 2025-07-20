@@ -4,7 +4,7 @@ function goToProductPage(event) {
     // event.preventDefault(); // 폼 기본 동작 막기
     const input = document.getElementById('productInput').value.trim();
 
-    console.log("입력값:", input); // 콘솔에서 값 확인용
+    console.log("입력값:",input); // 콘솔에서 값 확인용
 
     if (input === "") {
         alert("상품번호를 입력해주세요.");

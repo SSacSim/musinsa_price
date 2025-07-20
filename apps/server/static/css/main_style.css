@@ -11,6 +11,7 @@ body {
 
 .container {
     text-align: center;
+    margin: auto 0 100px 0;
 }
 
 .logo {
@@ -18,7 +19,6 @@ body {
     margin: 0 auto 20px auto; /* 가운데 정렬 + 아래 여백 */
     width: 450px; /* 필요에 따라 조정 */
 }
-
 
 .search-box {
     width: 500px;
@@ -49,7 +49,6 @@ button {
 button:hover {
     border: 1px solid #c6c6c6;
 }
-
 
 .search-container {
     position: fixed;
@@ -176,4 +175,37 @@ background-color: #f5f5f5;
 .search-results li.active {
 background-color: #e8f0fe;
 color: #1967d2;
+}
+
+
+/* swiper CSS*/
+.swiper {
+    width: 100%;
+    height: 80%;
+    /* max-width: 600px; */
+    margin: auto auto;
+    border-radius: 0px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.swiper-slide {
+    display: flex;
+    width: auto;
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+}
+
+.swiper-slide img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.swiper-slide p {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
 }

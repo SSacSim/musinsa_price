@@ -6,6 +6,7 @@
     <link rel="icon" href="{{ url_for('static', filename='logo/favicon.ico') }}" type="image/x-icon" />
 </head>
 <body>
+
     <!-- 상단 검색창 -->
     <div class="search-container">
         <div class="search-inner">
@@ -25,30 +26,30 @@
 
     <h1>{{ product.name }}</h1>
 
- <!-- 상품 이미지와 정보 -->
-<div class="product-details">
-    <!-- 이미지 -->
-    <div class="image-container">
-        
-        <a href="https://www.musinsa.com/products/{{ product.상품번호 }}" target="_blank">
-            <img src="{{ product.src }}" alt="상품 이미지" />
-        </a>
-    </div>
-
-    <!-- 상품 정보 -->
-    <div class="info-container">
-        <p><strong>상품 번호:</strong> {{ product.상품번호 }}</p>
-        <p><strong>상품명:</strong> {{ product.상품명 }}</p>
-        <p><strong>가격:</strong> {{ product.가격 }}</p>
-        <p><strong>할인율:</strong> {{ product.할인율 | default('0%', true) }}</p>
-        <p>
-            <strong>URL:</strong>
+    <!-- 상품 이미지와 정보 -->
+    <div class="product-details">
+        <!-- 이미지 -->
+        <div class="image-container">
+            
             <a href="https://www.musinsa.com/products/{{ product.상품번호 }}" target="_blank">
-                https://www.musinsa.com/products/{{ product.상품번호 }}
+                <img src="{{ product.src }}" alt="상품 이미지" />
             </a>
-        </p>
+        </div>
+
+        <!-- 상품 정보 -->
+        <div class="info-container">
+            <p><strong>상품 번호:</strong> {{ product.상품번호 }}</p>
+            <p><strong>상품명:</strong> {{ product.상품명 }}</p>
+            <p><strong>가격:</strong> {{ product.가격 }}</p>
+            <p><strong>할인율:</strong> {{ product.할인율 | default('0%', true) }}</p>
+            <p>
+                <strong>URL:</strong>
+                <a href="https://www.musinsa.com/products/{{ product.상품번호 }}" target="_blank">
+                    https://www.musinsa.com/products/{{ product.상품번호 }}
+                </a>
+            </p>
+        </div>
     </div>
-</div>
 
 <div class="chart-details">
     <!-- Char Container -->
