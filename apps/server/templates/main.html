@@ -10,7 +10,9 @@
 <body>
     <div class="container">
         <form id="searchForm" onsubmit=goToProductPage(event)>
-            <img src="{{ url_for('static', filename='logo/logo.png') }}" alt="Logo" class="logo">
+            <a href="/" >
+                <img src="{{ url_for('static', filename='logo/logo.png') }}" alt="Logo" class="logo">
+            </a>
             <input type="text" id="productInput" name="q" class="search-box"  placeholder="제품명/제품번호 입력">
             <ul id="searchResults" class="search-results"></ul>
             <div class="buttons">
@@ -24,7 +26,7 @@
         <div class="swiper-wrapper">
             {% for product in products %}
             <div class="swiper-slide">
-                <a href="https://www.musinsa.com/products/{{ product.상품번호 }}" target="_blank">
+                <a href="/product/{{ product.상품번호 }}" >
                     <img src="{{ product.src }}" alt="{{ product.상품명 }}">
                 </a>
                 <p>
